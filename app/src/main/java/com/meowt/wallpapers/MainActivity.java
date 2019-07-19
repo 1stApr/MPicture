@@ -67,8 +67,9 @@ public class MainActivity extends AppCompatActivity
     private int dem = -1;
     private int demTemp = -1;
     private int demTemp2 = -1;
-    private boolean liked = false;
+    public static boolean search = false;
     public static ArrayList<MyDataModel> list;
+    public static ArrayList<MyDataModel> listSearch;
     public static final int PERMISSION_REQUEST_CODE =1000;
     private int checkSearch = 0;
 
@@ -178,7 +179,6 @@ public class MainActivity extends AppCompatActivity
                     if(jsonObject.length() > 0) {
                         JSONArray array = jsonObject.getJSONArray("Sheet1");
                         int lenArray = array.length();
-                        //Log.d("DATA","Length: " + lenArray);
                         if(lenArray > 0) {
                             for( ; jIndex < lenArray; jIndex++) {
                                 MyDataModel model = new MyDataModel();
@@ -190,7 +190,6 @@ public class MainActivity extends AppCompatActivity
                                 model.setLink(link);
                                 model.setUseLink(useLink);
                                 list.add(model);
-                                //Log.d("DATA","Data: " + category + "||" + link + "||"+ useLink);
                             }
                         }
                     }
@@ -198,18 +197,11 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(getApplicationContext(), "Try Againt", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException je) {
-                Log.i(JSONParser.TAG, "" + je.getLocalizedMessage());
-            }
-            //Log.d("PATH","Get Data Succesful: "+ list.size());
 
-//            for(int i = 0;i<list.size();i++){
-//               Log.d("TEST","Name: "+ list.get(i).getCategory());
-//            }
+            }
+
             Collections.shuffle(list);
-            //Log.d("TEST","--------------------------------------");
-//            for(int i = 0;i<list.size();i++){
-//                Log.d("TEST","Name: "+ list.get(i).getCategory());
-//            }
+
             return null;
         }
     }
@@ -271,7 +263,6 @@ public class MainActivity extends AppCompatActivity
             dem++;
             if (dem < list.size()){
                 String path = list.get(dem).getLink();
-                //Log.d("PATH",path);
                 Picasso.with(getBaseContext()).load(path).placeholder(R.drawable.placeholder_downloading).into(imageView);
 
                 textView.setText(list.get(dem).getName());
@@ -279,7 +270,6 @@ public class MainActivity extends AppCompatActivity
             } else{
                 dem = 0;
                 String path = list.get(dem).getLink();
-                //Log.d("PATH",path);
                 Picasso.with(getBaseContext()).load(path).placeholder(R.drawable.placeholder_downloading).into(imageView);
 
                 textView.setText(list.get(dem).getName());
@@ -297,13 +287,11 @@ public class MainActivity extends AppCompatActivity
             demTemp--;
             if (demTemp>=0 && demTemp < list.size()){
                 String path = list.get(demTemp).getLink();
-               // Log.d("PATH",path);
                 Picasso.with(getBaseContext()).load(path).placeholder(R.drawable.placeholder_downloading).into(imageView);
                 textView.setText(list.get(demTemp).getName());
             } else{
                 demTemp = 0;
                 String path = list.get(demTemp).getLink();
-               // Log.d("PATH",path);
                 Picasso.with(getBaseContext()).load(path).placeholder(R.drawable.placeholder_downloading).into(imageView);
                 textView.setText(list.get(demTemp).getName());
             }
@@ -457,8 +445,31 @@ public class MainActivity extends AppCompatActivity
             editText.setSelection(editText.length());
 
         }else{
-            String url = "https://www.google.com/search?q=";
             String textSearch = String.valueOf(editText.getText());
+            Log.d("PATH","---Text---" + textSearch+ "--------");
+            for(int i = 0;i<list.size();i++){
+                String s = list.get(i).getName();
+                for(int j = 0;j<s.length();j++){
+                    String c = Character.toString(s.charAt(j));
+                    if(textSearch.equals(c)){
+                        Log.d("PATH","---Name---"+i+s+ "--------");
+                        MyDataModel modelTemp = new MyDataModel();
+                        modelTemp.setName(list.get(i).getName());
+                        modelTemp.setLink(list.get(i).getLink());
+                        modelTemp.setUseLink(list.get(i).getUseLink());
+                        //listSearch.add(modelTemp);
+                        //search = true;
+
+                    }
+                }
+
+            }
+//
+//            Intent intent = new Intent(MainActivity.this, FeaturedActivity.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//            startActivity(intent);
+
+            /*
             textSearch = textSearch.replace(" ","+");
             String link = url+textSearch;
             Uri uri = Uri.parse(link);
@@ -469,6 +480,8 @@ public class MainActivity extends AppCompatActivity
             } catch (ActivityNotFoundException e) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
             }
+
+            */
         }
 
     }

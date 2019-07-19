@@ -113,14 +113,9 @@ public class ContributeActivity extends AppCompatActivity
         String linkSocialNetworking = editTextLinkSocialNetworking.getText().toString();
         String note = editTextNote.getText().toString();
         if(name.equals("")||linkImage.equals("")) {
-            //Log.d("CONTRIBUTE","Result: " + name.equals("") + " || " + linkImage.equals(""));
+
             Toast.makeText(getApplicationContext(), "Name person & link image cannot be empty!", Toast.LENGTH_LONG).show();
         }else{
-//            Log.d("CONTRIBUTE","Contribute data:\n"
-//                    + "Name: " + name
-//                    + "\nLink Image: " + linkImage
-//                    + "\nLink Social Networking: " + linkSocialNetworking
-//                    + "\nNote: " + note);
             Toast.makeText(getApplicationContext(), "Use Gmail to send contribute!", Toast.LENGTH_LONG).show();
             Intent Email = new Intent(Intent.ACTION_SEND);
             Email.setType("text/email");

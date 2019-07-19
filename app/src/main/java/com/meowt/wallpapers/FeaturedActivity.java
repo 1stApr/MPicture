@@ -19,7 +19,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,8 +41,7 @@ public class FeaturedActivity extends AppCompatActivity
 
     Bitmap[] bitmaps;
     int size = 0;
-   // String[] name = new String[100];
-   // String[] pathUrlImage = new String[100];
+
     public static ArrayList<MyDataModel> arrayList;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -55,15 +53,14 @@ public class FeaturedActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        arrayList = MainActivity.list;
-        size = arrayList.size();
-        /*
-        for(int i = 0;i<100;i++){
-            name[i] = MainActivity.list.get(i).getName();
-            pathUrlImage[i] = MainActivity.list.get(i).getLink();
+        if(MainActivity.search){
+            arrayList = MainActivity.listSearch;
+            size = arrayList.size();
+        }else {
+            arrayList = MainActivity.list;
+            size = arrayList.size();
         }
-        */
+
         try {
             bitmaps = getBitmap();
         } catch (IOException e) {
@@ -86,17 +83,16 @@ public class FeaturedActivity extends AppCompatActivity
 
     private Bitmap[] getBitmap() throws IOException {
 
-        final Bitmap[] tempBitmap = new Bitmap[size];
+        final Bitmap[] tempBitmap = new Bitmap[50];
 //        tempBitmap[0] = BitmapFactory.decodeResource(getResources(),R.drawable.one);
 
-        for(int i = 0;i<size;i++){
+        for(int i = 0;i<50;i++){
             final int position = i;
             new Thread(new Runnable(){
                 @Override
                 public void run() {
                     try {
                         final String name = MainActivity.list.get(position).getLink();
-                        Log.d("PATH",name);
                         URL url = new URL(name);
                         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                         connection.setDoInput(true);
