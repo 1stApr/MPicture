@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.meowt.wallpapers.ContributeActivity"
+    tools:showIn="@layout/app_bar_contribute">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/circle_item_menu"
+        android:orientation="vertical"
+        android:weightSum="15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Your Contribute"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorBlack"
+            android:textAlignment="center"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="2"
+            android:background="@drawable/circle_item_menu"
+            android:ems="10"
+            android:hint="Enter Name Person..."
+            android:inputType="textPersonName"
+            android:onClick="onClickEditTextName"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/textViewLinkImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:text="Link Image" />
+
+        <EditText
+            android:id="@+id/editTextLinkImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="4"
+            android:background="@drawable/circle_item_menu"
+            android:ems="10"
+            android:hint="Enter Link Image..."
+            android:inputType="textMultiLine"
+            android:onClick="onClickEditTextLinkImage"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/textViewLinkSocialNetworking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:text="Link Social Networking" />
+
+        <EditText
+            android:id="@+id/editTextLinkSocialNetworking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="4"
+            android:background="@drawable/circle_item_menu"
+            android:ems="10"
+            android:hint="Enter Link Social Networking..."
+            android:inputType="textMultiLine"
+            android:onClick="onClickEditTextLinkSocialNetworking"
+            android:textColor="@color/colorWhite" />
+        <TextView
+            android:id="@+id/textViewNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:text="Note" />
+
+        <EditText
+            android:id="@+id/editTextNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="4"
+            android:background="@drawable/circle_item_menu"
+            android:ems="10"
+            android:hint="Enter Note..."
+            android:inputType="textMultiLine"
+            android:onClick="onClickEditTextNote"
+            android:textColor="@color/colorWhite" />
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:onClick="onClickButtonSend"
+            android:background="@drawable/circle_button_next"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:text="Send" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
